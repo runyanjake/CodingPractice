@@ -41,7 +41,7 @@ def boyer_moore(arr, key):
                 val = len(key) - i - 1
                 if val < bad_table[key[i]]:
                     bad_table[key[i]] = val
-    # print(bad_table)
+    print(bad_table)
     #parse arr
     itor = len(key)
     last_in_key = key[len(key)-1]
