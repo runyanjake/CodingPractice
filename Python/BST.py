@@ -123,28 +123,19 @@ class BST(object):
                     self.root = updated_root
                 else:
                     root = updated_root
-                print("AFTER LEFTSHIFT AROUND " + str(new_subtree.data) + ", BEFORE REBALANCING:")
-                self.printall()
                 self.__balance(new_subtree, updated_root)
-                print("AFTER LEFTSHIFT AROUND " + str(new_subtree.data) + ", AFTER REBALANCING:")
-                self.printall()
             else: #desire move right
                 (new_subtree, updated_root, parent) = self.rightrotation(root,parent)
                 if root == self.root:
                     self.root = updated_root
                 else:
                     root = updated_root
-                print("AFTER RIGHTSHIFT AROUND " + str(new_subtree.data) + ", BEFORE REBALANCING:")
-                self.printall()
                 self.__balance(new_subtree, updated_root)
-                print("AFTER RIGHTSHIFT AROUND " + str(new_subtree.data) + ", AFTER REBALANCING:")
-                self.printall()
         else:
             #bubble up recursion once balanced
             pass
 
     def insert(self, data):
-        print("insert " + str(data))
         self.__insert(self.root, data)
 
     def __insert(self, root, data):
@@ -300,7 +291,6 @@ if __name__ == "__main__":
     bst.delete(7)
 
     bst.inorder()
-    bst.printall()
 
     print(bst.search(1))
     
