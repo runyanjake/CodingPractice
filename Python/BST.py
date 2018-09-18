@@ -156,21 +156,77 @@ class BST(object):
             if data == root.data:
                 raise BSTException("BST.insert(): value exists in BST already.")
             elif data > root.data:
-                print(str(data) + " gt " + str(root.data))
                 if root.right is None:
                     root.right = Node(data)
                 else:
                     self.__insert(root.right,data)
             else: #data < root.data
-                print(str(data) + " lt " + str(root.data))
                 if root.left is None:
                     root.left = Node(data)
                 else:
                     self.__insert(root.left,data)
-            self.balance()
 
     def delete(self, target):
-        pass
+        self.__delete(self.root, None, target)
+        self.balance()
+    
+    def __delete(self, node, parent, target):
+        if node is None:
+            return
+        if node.data == target:
+            if parent is None: #deleting root
+                if node.right is None:
+                    self.root = node.right
+                else:
+                    newroot = self.root.right
+                    newleft = self.root.left
+                    overflow = newroot.left
+                    if newleft is None:
+                        newleft = overflow
+                    else:
+                        tmp = newleft
+                        while tmp.right is not None:
+                            tmp = tmp.right
+                        tmp.right = overflow
+                    self.root = newroot
+                    self.root.left = newleft
+            else:
+                if node.right is None:
+                    if parent.left == node:
+                        parent.left = node.left
+                    else:
+                        parent.right = node.left
+                else:
+                    if parent.left == node:
+                        newroot = parent.left.right
+                        newleft = parent.left.left
+                        overflow = newroot.left
+                        if newleft is None:
+                            newleft = overflow
+                        else:
+                            tmp = newleft
+                            while tmp.right is not None:
+                                tmp = tmp.right
+                            tmp.right = overflow
+                        parent.left = newroot
+                        parent.left.left = newleft
+                    else:
+                        newroot = parent.right.right
+                        newleft = parent.right.left
+                        overflow = newroot.left
+                        if newleft is None:
+                            newleft = overflow
+                        else:
+                            tmp = newleft
+                            while tmp.right is not None:
+                                tmp = tmp.right
+                            tmp.right = overflow
+                        parent.right = newroot
+                        parent.right.left = newleft
+        elif node.data > target:
+            self.__delete(node.left, node, target)
+        else: #node.data < target
+            self.__delete(node.right, node, target)
 
     def inorder(self):
         self.__inorder(self.root)
@@ -219,73 +275,69 @@ class BST(object):
 if __name__ == "__main__":
     bst = BST()
     #create 1-6 tree with inserts
-    # bst.insert(1)
-    # bst.insert(2)
-    # bst.insert(3)
-    # bst.insert(4)
-    # bst.insert(5)
-    # bst.insert(6)
+    bst.insert(1)
+    bst.insert(2)
+    bst.insert(3)
+    bst.insert(4)
+    bst.insert(5)
+    bst.insert(6)
+    bst.insert(7)
+    bst.insert(8)
+    bst.insert(9)
+    bst.insert(10)
+    bst.insert(11)
+    bst.insert(12)
+    bst.insert(13)
+    bst.insert(14)
 
-    #correct tree for 1-6
+    bst.delete(7)
+    # bst.balance()
+
+    bst.inorder()
+    bst.printall()
+    
+    #test left and right rotation
     # n1 = Node(1)
     # n2 = Node(2)
     # n3 = Node(3)
     # n4 = Node(4)
     # n5 = Node(5)
     # n6 = Node(6)
-    # n4.left = n2
-    # n4.right = n6
-    # n2.left = n1
+    # n7 = Node(7)
+    # n8 = Node(8)
+    # n9 = Node(9)
+    # n10 = Node(10)
+    # n11 = Node(11)
+    # n12 = Node(12)
+    # n13 = Node(13)
+    # n14 = Node(14)
+    # n1.right = n2
     # n2.right = n3
-    # n6.left = n5
-    # bst.root = n4
-
-    #test left and right rotation
-    n1 = Node(1)
-    n2 = Node(2)
-    n3 = Node(3)
-    n4 = Node(4)
-    n5 = Node(5)
-    n6 = Node(6)
-    n7 = Node(7)
-    n8 = Node(8)
-    n9 = Node(9)
-    n10 = Node(10)
-    n11 = Node(11)
-    n12 = Node(12)
-    n13 = Node(13)
-    n14 = Node(14)
-    n1.right = n2
-    n2.right = n3
-    n3.right = n4
-    n4.right = n5
-    n5.right = n6
-    n6.right = n7
-    n7.right = n8
-    n8.right = n9
-    n9.right = n10
-    n10.right = n11
-    n11.right = n12
-    n12.right = n13
-    n13.right = n14
+    # n3.right = n4
+    # n4.right = n5
+    # n5.right = n6
+    # n6.right = n7
+    # n7.right = n8
+    # n8.right = n9
+    # n9.right = n10
+    # n10.right = n11
+    # n11.right = n12
+    # n12.right = n13
+    # n13.right = n14
     
-    bst.root = n1
-    print("BEFORE Function")
-    bst.inorder()
-    bst.preorder()
-    bst.printall()
-    print("\n\n\n")
+    # bst.root = n1
+    # print("BEFORE Function")
+    # bst.inorder()
+    # bst.preorder()
+    # bst.printall()
+    # print("\n\n\n")
 
-    bst.balance()
+    # bst.balance()
 
-    # par = None
-    # (new_subtree, updated_root, parent) = bst.leftrotation(bst.root,par)
-    # bst.root = updated_root
-
-    print("\n\n\nAFTER Function")
-    bst.inorder()
-    bst.preorder()
-    bst.printall()
+    # print("\n\n\nAFTER Function")
+    # bst.inorder()
+    # bst.preorder()
+    # bst.printall()
 
     # bst.inorder()
     # bst.preorder()
