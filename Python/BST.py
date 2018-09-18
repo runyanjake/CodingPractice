@@ -267,10 +267,17 @@ class BST(object):
         return max(self.__height(root.left), self.__height(root.right)) + 1
 
     def search(self, data):
-        self.__search(self.root, data)
+        return self.__search(self.root, data)
 
-    def __search(self, root, data):
-        pass
+    def __search(self, node, data):
+        if node is None:
+            return False
+        if node.data == data:
+            return True
+        elif node.data < data:
+            return self.__search(node.right, data)
+        else: #node.data > data
+            return self.__search(node.left, data)
 
 if __name__ == "__main__":
     bst = BST()
@@ -291,10 +298,11 @@ if __name__ == "__main__":
     bst.insert(14)
 
     bst.delete(7)
-    # bst.balance()
 
     bst.inorder()
     bst.printall()
+
+    print(bst.search(1))
     
     #test left and right rotation
     # n1 = Node(1)
