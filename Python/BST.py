@@ -31,6 +31,9 @@ class BST(object):
     def __init__(self):
         self.root = None
 
+    def test(self, node):
+        node.data = -1
+
     def printall(self):
         print("BST with root: " + str(self.root.data))
         self.__printall(self.root)
@@ -79,6 +82,7 @@ class BST(object):
         return (ret,node,parent)
 
     def rightrotation(self, node, parent):
+        nonlocal node
         ret = None
         if parent is None: #at root
             tmp = node.left
@@ -118,7 +122,9 @@ class BST(object):
         right = self.__height(root.right)
         if(abs(left-right) > 1):
             if left < right: #desire move left
+                print("BEFORE:    ROOT: " + str(root) + "  PARENT: " + str(parent))
                 (new_subtree, updated_root, parent) = self.leftrotation(root,parent)
+                print("AFTER:    UPDATED_ROOT: " + str(updated_root) + "  ROOT: " + str(root) + "  PARENT: " + str(parent))
                 if root == self.root:
                     self.root = updated_root
                 else:
@@ -273,57 +279,59 @@ class BST(object):
 if __name__ == "__main__":
     bst = BST()
     #create 1-6 tree with inserts
-    bst.insert(1)
-    bst.insert(2)
-    bst.insert(3)
-    bst.insert(4)
-    bst.insert(5)
-    bst.insert(6)
-    bst.insert(7)
-    bst.insert(8)
-    bst.insert(9)
-    bst.insert(10)
-    bst.insert(11)
-    bst.insert(12)
-    bst.insert(13)
-    bst.insert(14)
 
-    bst.delete(7)
+    # bst.insert(1)
+    # bst.insert(2)
+    # bst.insert(3)
+    # bst.insert(4)
+    # bst.insert(5)
+    # bst.insert(6)
+    # bst.insert(7)
+    # bst.insert(8)
+    # bst.insert(9)
+    # bst.insert(10)
+    # bst.insert(11)
+    # bst.insert(12)
+    # bst.insert(13)
+    # bst.insert(14)
 
-    bst.inorder()
+    # bst.delete(7)
 
-    print(bst.search(1))
+    # bst.inorder()
+
+    # print(bst.search(1))
     
     #test left and right rotation
-    # n1 = Node(1)
-    # n2 = Node(2)
-    # n3 = Node(3)
-    # n4 = Node(4)
-    # n5 = Node(5)
-    # n6 = Node(6)
-    # n7 = Node(7)
-    # n8 = Node(8)
-    # n9 = Node(9)
-    # n10 = Node(10)
-    # n11 = Node(11)
-    # n12 = Node(12)
-    # n13 = Node(13)
-    # n14 = Node(14)
-    # n1.right = n2
-    # n2.right = n3
-    # n3.right = n4
-    # n4.right = n5
-    # n5.right = n6
-    # n6.right = n7
-    # n7.right = n8
-    # n8.right = n9
-    # n9.right = n10
-    # n10.right = n11
-    # n11.right = n12
-    # n12.right = n13
-    # n13.right = n14
+    n1 = Node(1)
+    n2 = Node(2)
+    n3 = Node(3)
+    n4 = Node(4)
+    n5 = Node(5)
+    n6 = Node(6)
+    n7 = Node(7)
+    n8 = Node(8)
+    n9 = Node(9)
+    n10 = Node(10)
+    n11 = Node(11)
+    n12 = Node(12)
+    n13 = Node(13)
+    n14 = Node(14)
+    n1.right = n2
+    n2.right = n3
+    n3.right = n4
+    n4.right = n5
+    n5.right = n6
+    n6.right = n7
+    n7.right = n8
+    n8.right = n9
+    n9.right = n10
+    n10.right = n11
+    n11.right = n12
+    n12.right = n13
+    n13.right = n14
     
-    # bst.root = n1
+    bst.root = n1
+    bst.balance()
     # print("BEFORE Function")
     # bst.inorder()
     # bst.preorder()
