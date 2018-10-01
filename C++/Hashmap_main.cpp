@@ -15,6 +15,7 @@ int main(int argc, char** argv){
     printf("Done\n");
 
     h->insert(1,3);
+    h->print();
 
     delete h;
     return 0;
