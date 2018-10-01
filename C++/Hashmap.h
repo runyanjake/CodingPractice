@@ -1,9 +1,7 @@
 /*
  * @author Jake Runyan
  * Hashmap.h
- * @desc Hashmap implementation in C++
- * @note Implementation MUST be done in the .h file for generic classes
- *     because of the way compilation around template classes is done.
+ * @desc <int,int> Hashmap implementation in C++
  */
 
 #ifndef HASHMAP_H
@@ -11,34 +9,42 @@
 
 #include <vector>
 
-#define STARTING_BUCKET_SIZE = 25
-#define STARTING_NUM_BUCKETS = 10
+#define STARTING_BUCKET_SIZE 25
+#define STARTING_NUM_BUCKETS 10
 
-template<class K, class V>
 class Hashmap {
 private:
     int bucket_size;
     int num_buckets;
     float load_factor;
-    std::vector<std::vector<std::pair<K,V>>>* map;
+    std::vector<std::vector<std::pair<int,int>>>* map;
 public:
+    //Constructor to create a new Hashmap
     Hashmap(){
-        printf("Hashmap Constructor\n");
+        bucket_size = STARTING_BUCKET_SIZE;
+        num_buckets = STARTING_NUM_BUCKETS;
+        load_factor = 0.0;
+        map = new std::vector<std::vector<std::pair<int,int>>>();
+        for(int a=0; a<num_buckets; ++a){
+            std::vector<std::pair<int,int>> buck = std::vector<std::pair<int,int>>();
+            map->push_back(buck);
+        }
     }
+    //Deconstructor deletes any dynamically allocated memory.
     ~Hashmap(){
-        printf("Hashmap Deconstructor\n");
+        delete map;
     }
 
-    int insert(K key, V value){
+    int insert(int key, int value){
         return 0;
     }
-    V remove(K key){
+    int remove(int key){
         return 0;
     }
-    V get(K key){
+    int get(int key){
         return 0;
     }
-    bool exists(K key){
+    bool exists(int key){
         return 0;
     }
 

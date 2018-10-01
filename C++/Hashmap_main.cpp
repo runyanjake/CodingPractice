@@ -11,7 +11,11 @@ using namespace std;
 
 int main(int argc, char** argv){
     printf("Creating hashmap... ");
-    Hashmap<int,int> h; //still calls ctor
+    Hashmap* h = new Hashmap; 
     printf("Done\n");
+
+    h->insert(1,3);
+
+    delete h;
     return 0;
 }
