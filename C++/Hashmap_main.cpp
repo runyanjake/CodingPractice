@@ -5,6 +5,7 @@
  */
 
 #include <vector>
+#include <cmath>
 using namespace std;
 
 #include "Hashmap.h"
@@ -14,8 +15,11 @@ int main(int argc, char** argv){
     Hashmap* h = new Hashmap; 
     printf("Done\n");
 
-    h->insert(1,3);
-    h->print();
+    for(long long a=0;a<1000;++a){
+        h->insert(rand() % 1000,a);
+        // h->print();
+        // h->printInternals();
+    }
 
     delete h;
     return 0;
