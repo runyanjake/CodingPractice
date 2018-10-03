@@ -44,8 +44,10 @@ public:
 
     //Hashes key to return the bucket to retrieve/place in.
     int hash(K key){
-        // return abs(key) % num_buckets;
-        return 0;
+        std::hash<K> hash;
+        int hashval = hash(key);
+        printf("Hashing value with hashval: %d\n", hashval);
+        return abs(hashval) % num_buckets;
     }
 
     //resize and rehashes the table by increasing the table dimensions by a factor of RESIZE_FACTOR
