@@ -46,7 +46,6 @@ public:
     int hash(K key){
         std::hash<K> hash;
         int hashval = hash(key);
-        printf("Hashing value with hashval: %d\n", hashval);
         return abs(hashval) % num_buckets;
     }
 
