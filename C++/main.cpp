@@ -18,15 +18,23 @@
  */
 
 #include <iostream>
-#include <vector>
-#include <stdlib.h>
-#include <stdio.h>
-#include <unordered_map>
 
-#include "hashmap.h"
+#include "HelloWorld.h"
+#include "Generic_Hashmap.h"
+#include "Hashmap.h"
 
 using namespace std;
 
 int main(int argc, char* argv[]){
+    HelloWorld *hw = new HelloWorld();
+    delete hw;
+    hw = nullptr;
 
+    Hashmap *h = new Hashmap();
+    delete h;
+    h = nullptr;
+
+    Generic_Hashmap<std::string,std::string> *gh = new Generic_Hashmap<std::string,std::string>();
+    delete gh;
+    gh = nullptr;
 }
