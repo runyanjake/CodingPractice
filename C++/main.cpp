@@ -19,9 +19,11 @@
 
 #include <iostream>
 
+#include "Hashmap.h"
 #include "HelloWorld.h"
 #include "Generic_Hashmap.h"
-#include "Hashmap.h"
+#include "JQueue.h"
+#include "JStack.h"
 
 using namespace std;
 
@@ -37,4 +39,16 @@ int main(int argc, char* argv[]){
     Generic_Hashmap<std::string,std::string> *gh = new Generic_Hashmap<std::string,std::string>();
     delete gh;
     gh = nullptr;
+
+    JStack *s = new JStack();
+    for(int a=0;a<100;++a){
+        if(a%2)
+            s->push(std::to_string(a));
+        if(a%5)
+            s->pop();
+    }
+    s->print();
+
+    delete s;
+    s = nullptr;
 }

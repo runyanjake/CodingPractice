@@ -1,14 +1,14 @@
 /*
  * @author Jake Runyan
- * Queue.h
+ * JQueue.h
  * @desc String queue implementation in C++
  */
 
 
-#ifndef STACK_H
-#define STACK_H
+#ifndef JQUEUE_H
+#define JQUEUE_H
 
-class Queue{
+class JQueue{
 private:
 public:
 };

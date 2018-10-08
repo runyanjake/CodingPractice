@@ -2,7 +2,7 @@
 FLAGS			= -std=gnu++14
 CUSTOMFILENAME	= -o a.out
 MAINSRC			= main.cpp
-MODULES			= HelloWorld #put .cpps here that have matching .h files (NOTE: .h files with no .cpp (like generic classes) get compiled when used)
+MODULES			= HelloWorld JStack JQueue #put .cpps here that have matching .h files (NOTE: .h files with no .cpp (like generic classes) get compiled when used)
 CPPSOURCE		= ${MODULES:=.cpp} ${MAINSRC}
 OBJS			= ${CPPSOURCE:.cpp=.o}
 

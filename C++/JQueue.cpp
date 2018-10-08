@@ -1,7 +1,7 @@
 /*
  * @author Jake Runyan
- * Queue.cpp
+ * JQueue.cpp
  * @desc String queue implementation in C++
  */
 
-#include "Queue.h"
+#include "JQueue.h"
