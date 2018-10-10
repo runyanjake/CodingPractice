@@ -19,6 +19,7 @@
 
 #include <iostream>
 
+#include "Graphs.h"
 #include "Hashmap.h"
 #include "HelloWorld.h"
 #include "Generic_Hashmap.h"
@@ -47,4 +48,14 @@ int main(int argc, char* argv[]){
     JQueue *q = new JQueue();
     delete q;
     q = nullptr;
+
+    Graph *g = new Graph();
+    for(int a=0;a<10;++a)
+        g->addVertex();
+    for(int a=0;a<10;++a)
+        g->addEdge(a+1,a+2);
+        
+    g->print();
+    delete g;
+    g = nullptr;
 }
