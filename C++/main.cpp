@@ -45,34 +45,6 @@ int main(int argc, char* argv[]){
     s = nullptr;
 
     JQueue *q = new JQueue();
-
-    q->enqueue("a");
-    q->print();
-    q->enqueue("aa");
-    q->print();
-    q->dequeue();
-    q->print();
-    q->enqueue("aaa");
-    q->print();
-    q->enqueue("aaaa");
-    q->print();
-    q->enqueue("aaaaa");
-    q->print();
-    q->dequeue();
-    q->print();
-    q->enqueue("aaaaaa");
-    q->print();
-    q->enqueue("aaaaaaa");
-    q->print();
-    q->enqueue("aaaaaaaa");
-    q->print();
-    q->enqueue("aaaaaaaaa");
-    q->print();
-    q->dequeue();
-    q->print();
-    q->enqueue("aaaaaaaaaa");
-    q->print();
-
     delete q;
     q = nullptr;
 }
