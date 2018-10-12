@@ -22,29 +22,31 @@ public:
     Graph();
     ~Graph();
     int addVertex(int val=INF);
-    int addEdge(int src, int dst);
-    void print();
+    int addEdge(int src, int dst);  
+    virtual void print(); //is overridden by derived classes
 };
 
-class UndirectedGraph : protected Graph {
-protected:
-    //edges and vertices are inherited
+class UndirectedGraph : public Graph {
+private:
+    //edges and vertices are accessed thru public calls inherited from Graph
 public:
     UndirectedGraph();
     ~UndirectedGraph();
     static void dijkstraAlgorithm();
     static void kruskalAlgorithm();
     static void primAlgorithm();
+    void print();
 };
 
-class DirectedGraph : protected Graph {
-protected:
-    //edges and vertices are inherited
+class DirectedGraph : public Graph {
+private:
+    //edges and vertices are accessed thru public calls inherited from Graph
 public:
     DirectedGraph();
     ~DirectedGraph();
     static int maxFlow();
     static int minCut();
+    void print();
 };
 
 #endif

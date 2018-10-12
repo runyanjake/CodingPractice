@@ -33,7 +33,7 @@ int Graph::addEdge(int src, int dst){
     return 0;
 }
 
-void Graph::print(){
+void Graph::print() {
     printf("Vertex Set: ");
     bool first = true;
     for(auto itor = vertex_set->begin(); itor != vertex_set->end(); ++itor){
@@ -53,11 +53,10 @@ UndirectedGraph::UndirectedGraph(){
 }
 
 UndirectedGraph::~UndirectedGraph(){
-
+    
 }
 
 static void dijkstraAlgorithm(){
-    
 }
 
 static void kruskalAlgorithm(){
@@ -66,6 +65,21 @@ static void kruskalAlgorithm(){
 
 static void primAlgorithm(){
     
+}
+
+void UndirectedGraph::print(){
+    printf("Vertex Set (Undirected): ");
+    bool first = true;
+    for(auto itor = vertex_set->begin(); itor != vertex_set->end(); ++itor){
+        if(first)
+            printf("(%d,%d)", std::get<0>(*itor), std::get<1>(*itor));
+        else
+            printf(" (%d,%d)", std::get<0>(*itor), std::get<1>(*itor));
+    }
+    printf("\nEdge Set (Undirected):\n");
+    for(auto itor = edge_set->begin(); itor != edge_set->end(); ++itor){
+        printf("(%d,%d,%d)\n", std::get<0>(*itor), std::get<1>(*itor), std::get<2>(*itor));
+    }
 }
 
 DirectedGraph::DirectedGraph(){
@@ -82,4 +96,19 @@ static int maxFlow(){
 
 static int minCut(){
     return -1;
+}
+
+void DirectedGraph::print(){
+    printf("Vertex Set (Directed): ");
+    bool first = true;
+    for(auto itor = vertex_set->begin(); itor != vertex_set->end(); ++itor){
+        if(first)
+            printf("(%d,%d)", std::get<0>(*itor), std::get<1>(*itor));
+        else
+            printf(" (%d,%d)", std::get<0>(*itor), std::get<1>(*itor));
+    }
+    printf("\nEdge Set(Directed):\n");
+    for(auto itor = edge_set->begin(); itor != edge_set->end(); ++itor){
+        printf("(%d,%d,%d)\n", std::get<0>(*itor), std::get<1>(*itor), std::get<2>(*itor));
+    }
 }

@@ -49,7 +49,7 @@ int main(int argc, char* argv[]){
     delete q;
     q = nullptr;
 
-    Graph *g = new Graph();
+    Graph *g = new UndirectedGraph();
     for(int a=0;a<10;++a)
         g->addVertex();
     for(int a=0;a<10;++a)
