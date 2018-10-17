@@ -49,12 +49,26 @@ int main(int argc, char* argv[]){
     delete q;
     q = nullptr;
 
-    Graph *g = new UndirectedGraph();
-    for(int a=0;a<10;++a)
+    UndirectedGraph *g = new UndirectedGraph();
+    // for(int a=0;a<10;++a)
+    //     g->addVertex();
+    // for(int a=0;a<10;++a)
+    //     g->addEdge(a+1,a+2,INF);
+    for(int a=0;a<6;++a)
         g->addVertex();
-    for(int a=0;a<10;++a)
-        g->addEdge(a+1,a+2);
-        
+    g->addEdge(1,2,1);
+    g->addEdge(1,4,1);
+    g->addEdge(2,4,2);
+    g->addEdge(2,3,2);
+    g->addEdge(4,3,3);
+    g->addEdge(3,5,4);
+    g->addEdge(4,5,2);
+    g->addEdge(4,6,1);
+    g->addEdge(5,6,5);
+    printf("Before Dijkstra:\n");
+    g->print();
+    g->dijkstraAlgorithm(1);
+    printf("\nAfter Dijkstra:\n");
     g->print();
     delete g;
     g = nullptr;

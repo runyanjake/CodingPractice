@@ -16,13 +16,13 @@
 
 class Graph {
 protected:
-    std::vector<std::tuple<int,int,int>>* edge_set; //(idx,src,dst)
+    std::vector<std::tuple<int,int,int,int>>* edge_set; //(idx,src,dst,weight)
     std::vector<std::tuple<int,int>>* vertex_set; //(idx,value)
 public:
     Graph();
     ~Graph();
     int addVertex(int val=INF);
-    int addEdge(int src, int dst);  
+    int addEdge(int src, int dst, int weight);  
     virtual void print(); //is overridden by derived classes
 };
 
@@ -32,9 +32,9 @@ private:
 public:
     UndirectedGraph();
     ~UndirectedGraph();
-    static void dijkstraAlgorithm();
-    static void kruskalAlgorithm();
-    static void primAlgorithm();
+    void dijkstraAlgorithm(int startNode);
+    void kruskalAlgorithm();
+    void primAlgorithm();
     void print();
 };
 
@@ -44,8 +44,8 @@ private:
 public:
     DirectedGraph();
     ~DirectedGraph();
-    static int maxFlow();
-    static int minCut();
+    int maxFlow();
+    int minCut();
     void print();
 };
 
