@@ -18,6 +18,14 @@ public class main{
     d2.bark();
     d.bark();
 
+    int x=25,y=25;
+    JScreen js = new JScreen(x,y);
+    js.swapBit(4, 1);
+    js.swapBit(4, 2);
+    js.swapBit(3, 2);
+    js.swapBit(2, 1);
+    js.swapBit(3, 3);
+    js.playGOL();
     
  }
 
